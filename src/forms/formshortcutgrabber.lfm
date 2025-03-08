@@ -1,0 +1,158 @@
+object frmShortCutGrabber: TfrmShortCutGrabber
+  Left = 558
+  Height = 230
+  Top = 250
+  Width = 806
+  BorderStyle = bsDialog
+  Caption = 'frmShortCutGrabber'
+  ClientHeight = 230
+  ClientWidth = 806
+  DesignTimePPI = 144
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  object btnGrab: TButton
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 661
+    Height = 38
+    Top = 174
+    Width = 113
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 32
+    BorderSpacing.Bottom = 18
+    Caption = 'Grab'
+    Default = True
+    ModalResult = 1
+    TabOrder = 5
+    OnClick = btnGrabClick
+  end
+  object btnCancel: TButton
+    AnchorSideRight.Control = btnGrab
+    AnchorSideBottom.Control = btnGrab
+    AnchorSideBottom.Side = asrBottom
+    Left = 530
+    Height = 38
+    Top = 174
+    Width = 113
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 18
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 6
+  end
+  object btnUngrab: TButton
+    AnchorSideRight.Control = btnCancel
+    AnchorSideBottom.Control = btnCancel
+    AnchorSideBottom.Side = asrBottom
+    Left = 399
+    Height = 38
+    Top = 174
+    Width = 113
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 18
+    Caption = 'Ungrab'
+    ModalResult = 3
+    TabOrder = 7
+  end
+  object chbShift: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 32
+    Height = 27
+    Top = 32
+    Width = 68
+    BorderSpacing.Left = 32
+    BorderSpacing.Top = 32
+    Caption = 'Shift'
+    TabOrder = 1
+    OnChange = CheckBoxStateChange
+  end
+  object chbControl: TCheckBox
+    AnchorSideLeft.Control = chbShift
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = chbShift
+    Left = 132
+    Height = 27
+    Top = 32
+    Width = 94
+    BorderSpacing.Left = 32
+    Caption = 'Control'
+    TabOrder = 2
+    OnChange = CheckBoxStateChange
+  end
+  object chbSuper: TCheckBox
+    AnchorSideLeft.Control = chbControl
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = chbControl
+    Left = 258
+    Height = 27
+    Top = 32
+    Width = 120
+    BorderSpacing.Left = 32
+    Caption = 'Super/Win'
+    TabOrder = 3
+    OnChange = CheckBoxStateChange
+  end
+  object chbAlt: TCheckBox
+    AnchorSideLeft.Control = chbSuper
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = chbSuper
+    Left = 410
+    Height = 27
+    Top = 32
+    Width = 52
+    BorderSpacing.Left = 32
+    Caption = 'Alt'
+    TabOrder = 4
+    OnChange = CheckBoxStateChange
+  end
+  object cbKeyGrab: TComboBox
+    AnchorSideLeft.Control = chbAlt
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = chbShift
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = btnGrab
+    AnchorSideRight.Side = asrBottom
+    Left = 494
+    Height = 40
+    Hint = 'Grab key...'
+    Top = 25
+    Width = 280
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 32
+    ItemHeight = 0
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 0
+    TextHint = 'Press keys to grab...'
+    OnChange = cbKeyGrabChange
+    OnKeyDown = cbKeyGrabKeyDown
+  end
+  object lblShortCutPreview: TLabel
+    AnchorSideLeft.Control = chbShift
+    AnchorSideTop.Control = cbKeyGrab
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = cbKeyGrab
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = btnGrab
+    Left = 32
+    Height = 97
+    Top = 71
+    Width = 742
+    Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Top = 6
+    BorderSpacing.Bottom = 6
+    Caption = 'Press keys to grab...'
+    Font.Color = clGrayText
+    Font.Height = -28
+    Layout = tlCenter
+    ParentFont = False
+  end
+end

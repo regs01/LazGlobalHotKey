@@ -1,0 +1,54 @@
+object Form1: TForm1
+  Left = 553
+  Height = 552
+  Top = 250
+  Width = 781
+  Caption = 'Form1'
+  ClientHeight = 552
+  ClientWidth = 781
+  DesignTimePPI = 144
+  LCLVersion = '4.99.0.0'
+  object Memo1: TMemo
+    Left = 20
+    Height = 464
+    Top = 20
+    Width = 741
+    Align = alTop
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Around = 20
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 552
+    Height = 38
+    Top = 498
+    Width = 209
+    Anchors = [akRight, akBottom]
+    Caption = 'Register HotKeys'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object ActionList1: TActionList
+    Left = 464
+    Top = 120
+    object Action1: TAction
+      Caption = 'Action1'
+      ShortCut = 32833
+      OnExecute = Action1Execute
+    end
+    object Action2: TAction
+      Caption = 'Action2'
+      ShortCut = 49217
+      OnExecute = Action2Execute
+    end
+  end
+  object GlobalHotKey1: TGlobalHotKey
+    OnHotKey = GlobalHotKey1HotKey
+    OnRegister = GlobalHotKey1Register
+    Left = 608
+    Top = 120
+  end
+end

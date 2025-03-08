@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <Name Value="LazGlobalHotKey"/>
+    <Type Value="RunAndDesignTime"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <IncludeFiles Value="src"/>
+        <OtherUnitFiles Value="src;src/forms"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Version Minor="7"/>
+    <Files>
+      <Item>
+        <Filename Value="src/lazhotkey.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="LazHotKey"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeytype.pas"/>
+        <UnitName Value="LazHotKeyType"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyplatform.pas"/>
+        <UnitName Value="LazHotKeyPlatform"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyplatformwin.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="LazHotKeyPlatformWin"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyplatformunix.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="LazHotKeyPlatformUnix"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyplatformdarwin.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="LazHotKeyPlatformDarwin"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyfunctionswin.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="LazHotKeyFunctionsWin"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyfunctionsunix.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="LazHotKeyFunctionsUnix"/>
+      </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyfunctionsdarwin.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="LazHotKeyFunctionsDarwin"/>
+      </Item>
+      <Item>
+        <Filename Value="src/forms/formhotkeylisteditor.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="FormHotKeyListEditor"/>
+      </Item>
+      <Item>
+        <Filename Value="src/forms/formshortcutgrabber.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="FormShortCutGrabber"/>
+      </Item>
+    </Files>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="IDEIntf"/>
+      </Item>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+      <Item>
+        <PackageName Value="FCL"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

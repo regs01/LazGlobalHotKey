@@ -1,0 +1,84 @@
+object frmHotKeyListEditor: TfrmHotKeyListEditor
+  Left = 558
+  Height = 438
+  Top = 250
+  Width = 479
+  Caption = 'frmHotKeyListEditor'
+  ClientHeight = 438
+  ClientWidth = 479
+  DesignTimePPI = 144
+  LCLVersion = '4.99.0.0'
+  object lbHotKeys: TListBox
+    Left = 0
+    Height = 399
+    Top = 39
+    Width = 479
+    Align = alClient
+    ItemHeight = 0
+    PopupMenu = pmnuContextMenu
+    TabOrder = 0
+    TopIndex = -1
+  end
+  object tbMain: TToolBar
+    Left = 0
+    Height = 39
+    Top = 0
+    Width = 479
+    Caption = 'tbMain'
+    TabOrder = 1
+    object tbtnAddHotKey: TToolButton
+      Left = 1
+      Top = 2
+      Action = cAddHotKey
+    end
+    object tbtnRemoveHotKey: TToolButton
+      Left = 36
+      Top = 2
+      Action = cRemoveHotKey
+    end
+    object tbtnDivider1: TToolButton
+      Left = 71
+      Height = 5
+      Top = 2
+      Caption = 'tbtnDivider1'
+      Style = tbsDivider
+    end
+    object tbtnRefreshList: TToolButton
+      Left = 76
+      Top = 2
+      Action = cRefreshList
+    end
+  end
+  object pmnuContextMenu: TPopupMenu
+    Left = 352
+    Top = 280
+    object mnuAdd: TMenuItem
+      Action = cAddHotKey
+    end
+    object mnuRemove: TMenuItem
+      Action = cRemoveHotKey
+    end
+    object Separator1: TMenuItem
+      Caption = '-'
+    end
+    object mnuRefresh: TMenuItem
+      Action = cRefreshList
+    end
+  end
+  object alHotKeys: TActionList
+    Left = 352
+    Top = 184
+    object cAddHotKey: TAction
+      Caption = 'Add Hotkey...'
+      OnExecute = cAddHotKeyExecute
+    end
+    object cRemoveHotKey: TAction
+      Caption = 'Remove Hotkey'
+      OnExecute = cRemoveHotKeyExecute
+    end
+    object cRefreshList: TAction
+      Caption = 'Refresh list'
+      OnExecute = cRefreshListExecute
+    end
+  end
+end
