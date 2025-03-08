@@ -13,16 +13,8 @@
       </XPManifest>
       <Icon Value="0"/>
     </General>
-    <MacroValues Count="1">
-      <Macro2 Name="LCLWidgetType" Value="gtk2"/>
-    </MacroValues>
     <BuildModes>
       <Item Name="Default" Default="True"/>
-      <SharedMatrixOptions Count="3">
-        <Item1 ID="852879448183" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item2 ID="871002280878" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
-        <Item3 ID="974243208855" Type="IDEMacro" MacroName="LCLWidgetType" Value="win32"/>
-      </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
