@@ -356,8 +356,8 @@ begin
 
   LPreviousErrorHandler := XSetErrorHandler(@XErrorHandler);
 
-  // Makes tones of grabs, as X11 incorrectly threating Lock keys as Modifiers.
-  // So making grabs for any possible variation of Caps Lock, Num Lock.
+  // X11 incorrectly threating Lock keys as Modifiers.
+  // So making grabs for any possible variation of Caps Lock and Num Lock.
   // Scroll Lock is not a Modifier in X11.
   // Note: ISO Shifts require testing.
   //   1. ShiftMask   : Shift
@@ -369,16 +369,20 @@ begin
   //  64. Mod4Mask    : Super, Hyper
   // 128. Mod5Mask    : ISO_Level3_Shift?
 
-  if not DoXGrabKey(iXKeyCode, iXModifiers) then
-    Exit;
-  if not DoXGrabKey(iXKeyCode, iXModifiers or (LockMask)) then
-    Exit;
-  if not DoXGrabKey(iXKeyCode, iXModifiers or (Mod2Mask)) then
-    Exit;
-  if not DoXGrabKey(iXKeyCode, iXModifiers or (LockMask or Mod2Mask)) then
-    Exit;
+  try
 
-  XSetErrorHandler(LPreviousErrorHandler);
+    if not DoXGrabKey(iXKeyCode, iXModifiers) then
+      Exit;
+    if not DoXGrabKey(iXKeyCode, iXModifiers or (LockMask)) then
+      Exit;
+    if not DoXGrabKey(iXKeyCode, iXModifiers or (Mod2Mask)) then
+      Exit;
+    if not DoXGrabKey(iXKeyCode, iXModifiers or (LockMask or Mod2Mask)) then
+      Exit;
+
+  finally
+    XSetErrorHandler(LPreviousErrorHandler);
+  end;
 
   WriteLn('After grab.');
 
