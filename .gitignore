@@ -31,4 +31,6 @@ lib/
 
 .backup/
 bin/
+out/
+.vscode/
 !/*.res
