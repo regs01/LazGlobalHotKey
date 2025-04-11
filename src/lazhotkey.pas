@@ -351,7 +351,10 @@ begin
   Result := RegisterGlobalHotkey(@AHotKeyInfo);
 
   if Result then
-    {%H-}FHotKeyList.Add(AHotKeyInfo);
+  begin
+    if FHotKeyList.Add(AHotKeyInfo) <> FHotKeyList.Count-1 then
+      Result := False;
+  end;
 
   StartHandler;
 
@@ -398,7 +401,7 @@ begin
 
   StopHandler;
 
-  LpHotKeyInfo := FHotKeyList.List[iHotKeyIndex];
+  LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
 
   Result := UnregisterGlobalHotkey(LpHotKeyInfo);
 
@@ -420,9 +423,9 @@ begin
 
   StopHandler;
 
-  for iHotKeyIndex := FHotKeyList.Count-1 downto 0 do
+  for iHotKeyIndex := 0 to FHotKeyList.Count-1 do
   begin
-    LpHotKeyInfo := FHotKeyList.List[iHotKeyIndex];
+    LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
     ResultValue := RegisterGlobalHotkey(LpHotKeyInfo);
     Result := Result and ResultValue;
   end;
@@ -444,7 +447,7 @@ begin
 
   for iHotKeyIndex := FHotKeyList.Count-1 downto 0 do
   begin
-    LpHotKeyInfo := FHotKeyList.List[iHotKeyIndex];
+    LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
     ResultValue := UnregisterGlobalHotkey(LpHotKeyInfo);
     Result := Result and ResultValue;
   end;
@@ -464,7 +467,7 @@ begin
 
   for iHotKeyIndex := FHotKeyList.Count-1 downto 0 do
   begin
-      LpHotKeyInfo := FHotKeyList.List[iHotKeyIndex];
+      LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
     ResultValue := UnregisterGlobalHotkey(LpHotKeyInfo);
     if ResultValue then
       FHotKeyList.Delete(iHotKeyIndex);

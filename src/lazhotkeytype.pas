@@ -25,7 +25,7 @@ uses
     TNativeShortCut = type Low(DWord)..High(DWord);
 
     PTHotKeyInfo = ^THotKeyInfo;
-    THotKeyInfo = packed record
+    THotKeyInfo = record
       Id: Word;
       ShortCut: TShortCut;
       NativeShortCut: TNativeShortCut;
