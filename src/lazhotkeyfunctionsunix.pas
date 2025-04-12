@@ -530,13 +530,13 @@ begin
 
   Result := 0;
 
-  // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper
+  // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper. LCL ssMeta is Super/Win.
   // Caps, Num and Scroll are lock/toggle key, not modifiers, so we filter out them all
-  if (ssAlt in AShiftState) or (ssMeta in AShiftState) then Result := Result or Mod1Mask;
+  if (ssAlt in AShiftState) then Result := Result or Mod1Mask;
   if (ssAltGr in AShiftState) then Result := Result or Mod5Mask;
   if (ssCtrl in AShiftState)  then Result := Result or ControlMask;
   if (ssShift in AShiftState) then Result := Result or ShiftMask;
-  if (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or Mod4Mask;
+  if (ssMeta in AShiftState) or (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or Mod4Mask;
 
 end;
 
@@ -556,7 +556,7 @@ begin
 
   Result := [];
 
-  // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper
+  // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper. LCL ssMeta is Super/Win.
   // Caps, Num and Scroll are lock/toggle key, not modifiers, so we filter out them all
 
   // Filtering out Caps Lock and Num Lock
@@ -566,7 +566,7 @@ begin
   if AXKeysymMask and Mod5Mask <> 0 then Result := Result + [ssAltGr];
   if AXKeysymMask and ControlMask <> 0 then Result := Result + [ssCtrl];
   if AXKeysymMask and ShiftMask <> 0 then Result := Result + [ssShift];
-  if AXKeysymMask and Mod4Mask <> 0 then Result := Result + [ssSuper];  // Defaulting to Super. Could be Hyper as well.
+  if AXKeysymMask and Mod4Mask <> 0 then Result := Result + [ssMeta];  // Defaulting to ssMeta,  Could be Hyper or Super as well.
 
 end;
 

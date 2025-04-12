@@ -99,10 +99,10 @@ begin
   Result := 0;
 
   // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper
-  if (ssAlt in AShiftState) or (ssMeta in AShiftState) or (ssAltGr in AShiftState) then Result := Result or MOD_ALT;
+  if (ssAlt in AShiftState) or (ssAltGr in AShiftState) then Result := Result or MOD_ALT;
   if (ssCtrl in AShiftState)  then Result := Result or MOD_CONTROL;
   if (ssShift in AShiftState) then Result := Result or MOD_SHIFT;
-  if (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or MOD_WIN;
+  if (ssMeta in AShiftState) or (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or MOD_WIN;
 
 end;
 
@@ -114,7 +114,7 @@ begin
   if AWinModifiers and MOD_ALT <> 0 then Result := Result + [ssAlt];
   if AWinModifiers and MOD_CONTROL <> 0 then Result := Result + [ssCtrl];
   if AWinModifiers and MOD_SHIFT <> 0 then Result := Result + [ssShift];
-  if AWinModifiers and MOD_WIN <> 0 then Result := Result + [ssSuper];
+  if AWinModifiers and MOD_WIN <> 0 then Result := Result + [ssMeta];
 
 end;
 

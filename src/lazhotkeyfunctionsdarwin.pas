@@ -375,19 +375,19 @@ begin
 
   Result := 0;
 
-  // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper
-  if (ssAlt in AShiftState) or (ssMeta in AShiftState) or (ssAltGr in AShiftState) then Result := optionKey;
+  // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper. LCL ssMeta is Super/Win.
+  if (ssAlt in AShiftState) or (ssAltGr in AShiftState) then Result := optionKey;
   if (ssShift in AShiftState) then Result := Result or shiftKey;
 
   if APlatformAdjusted then
   begin
     if (ssCtrl in AShiftState)  then Result := Result or cmdKey;
-    if (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or controlKey;
+    if (ssMeta in AShiftState) or (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or controlKey;
   end
   else
   begin
     if (ssCtrl in AShiftState)  then Result := Result or controlKey;
-    if (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or cmdKey;
+    if (ssMeta in AShiftState) or (ssSuper in AShiftState) or (ssHyper in AShiftState) then Result := Result or cmdKey;
   end;
 
 end;
@@ -412,18 +412,18 @@ begin
   // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper
   // Caps, Num and Scroll are lock/toggle key, not modifiers, so we filter out them all
 
-  if (AModifiers and optionKey <> 0) then Result := Result + [ssAlt]; // Defaulting to Alt. Could be Meta or AltGr as well.
+  if (AModifiers and optionKey <> 0) then Result := Result + [ssAlt];
   if (AModifiers and shiftKey <> 0) then Result := Result + [ssShift];
 
   if APlatformAdjusted then
   begin
     if (AModifiers and cmdKey <> 0) then Result := Result + [ssCtrl];
-    if (AModifiers and controlKey <> 0) then Result := Result + [ssSuper]; // Defaulting to Super. Could be Hyper as well.
+    if (AModifiers and controlKey <> 0) then Result := Result + [ssMeta];
   end
   else
   begin
     if (AModifiers and controlKey <> 0) then Result := Result + [ssCtrl];
-    if (AModifiers and cmdKey <> 0) then Result := Result + [ssSuper]; // Defaulting to Super. Could be Hyper as well.
+    if (AModifiers and cmdKey <> 0) then Result := Result + [ssMeta];
   end;
 
 end;
@@ -436,24 +436,21 @@ begin
   // Alt, AltGr, Meta, Ctrl, Shift, Super (Win) and Hyper
   // Caps, Num and Scroll are lock/toggle key, not modifiers, so we filter out them all
 
-  if (AModifiers and optionKey <> 0) then Result := Result or MOD_WIN_ALT; // Defaulting to Alt. Could be Meta or AltGr as well.
+  if (AModifiers and optionKey <> 0) then Result := Result or MOD_WIN_ALT;
   if (AModifiers and shiftKey <> 0) then Result := Result or MOD_WIN_SHIFT;
 
   if APlatformAdjusted then
   begin
     if (AModifiers and cmdKey <> 0) then Result := Result or MOD_WIN_CONTROL;
-    if (AModifiers and controlKey <> 0) then Result := Result or MOD_WIN_SUPER; // Defaulting to Super. Could be Hyper as well.
+    if (AModifiers and controlKey <> 0) then Result := Result or MOD_WIN_SUPER;
   end
   else
   begin
     if (AModifiers and controlKey <> 0) then Result := Result or MOD_WIN_CONTROL;
-    if (AModifiers and cmdKey <> 0) then Result := Result or MOD_WIN_SUPER; // Defaulting to Super. Could be Hyper as well.
+    if (AModifiers and cmdKey <> 0) then Result := Result or MOD_WIN_SUPER;
   end;
 
 end;
-
-
-
 
 end.
 

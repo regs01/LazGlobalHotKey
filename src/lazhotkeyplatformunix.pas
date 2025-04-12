@@ -363,11 +363,11 @@ begin
   //   1. ShiftMask   : Shift
   //   2. LockMask    : Caps Lock
   //   4. ControlMask : Ctrl
-  //   8. Mod1Mask    : Alt, Meta
+  //   8. Mod1Mask    : Alt (could also be Meta (not ssMeta))
   //  16. Mod2Mask    : Num Lock
   //  32. Mod3Mask    : ISO_Level5_Shift?
-  //  64. Mod4Mask    : Super, Hyper
-  // 128. Mod5Mask    : ISO_Level3_Shift?
+  //  64. Mod4Mask    : Super, Win (ssMeta) (could also be Hyper)
+  // 128. Mod5Mask    : ISO_Level3_Shift? (AltGr?)
 
   try
 
