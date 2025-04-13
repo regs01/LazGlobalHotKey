@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, LCLType, LMessages, LCLIntf,
   BaseUnix, MacOSAll,
-  LazHotKeyType, LazHotKeyFunctionsDarwin, LazHotKeyPlatform, LazHotKeyFunctions;
+  LazHotKeyType, LazHotKeyFunctionsDarwin, LazHotKeyPlatform;
 
 type
 

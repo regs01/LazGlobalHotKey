@@ -81,7 +81,7 @@ begin
   begin
     iHotKeyIndex := FHotKeyList.IndexById(AHotKeyId);
     if iHotKeyIndex >= 0 then
-      FOnHotKeyEvent( @(FHotKeyList.{%H-}List^[iHotKeyIndex]) );
+      FOnHotKeyEvent( @(FHotKeyList.List{%H-}^[iHotKeyIndex]) );
   end;
 
 end;

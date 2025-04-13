@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, Windows, LCLType, LCLIntf, Menus,
-  LazHotKeyType, LazHotKeyFunctions;
+  LazHotKeyType;
 
   function KeyCodeToNativeShortCut(const AKeycode: UINT; const AModifiers: UINT): TNativeShortCut;
   procedure NativeShortCutToKeyCode(const AShortCut: TNativeShortCut; out AKeycode: UINT; out AModifiers: UINT);
