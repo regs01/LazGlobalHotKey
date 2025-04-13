@@ -92,8 +92,11 @@ procedure TfrmShortCutGrabber.FormShow(Sender: TObject);
 begin
 
   btnUngrab.Visible := FUngrabButton;
-  if FShortCut <> 0 then
+  if FShortCut <> VK_UNKNOWN then
+  begin
     SetShortCut;
+    SetPreviewShortCut;
+  end;
 
 end;
 
