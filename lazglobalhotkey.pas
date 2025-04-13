@@ -8,7 +8,8 @@ unit LazGlobalHotKey;
 interface
 
 uses
-  LazHotKey, LazHotKeyType, LazHotKeyPlatform, LazarusPackageIntf;
+  LazHotKey, LazHotKeyType, LazHotKeyPlatform, LazHotKeyFunctions, 
+  LazarusPackageIntf;
 
 implementation
 

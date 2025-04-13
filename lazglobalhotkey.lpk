@@ -66,6 +66,10 @@
         <AddToUsesPkgSection Value="False"/>
         <UnitName Value="FormShortCutGrabber"/>
       </Item>
+      <Item>
+        <Filename Value="src/lazhotkeyfunctions.pas"/>
+        <UnitName Value="lazhotkeyfunctions"/>
+      </Item>
     </Files>
     <RequiredPkgs>
       <Item>

@@ -55,6 +55,9 @@ var
 
 implementation
 
+uses
+  LazHotKeyFunctions;
+
 {$R *.lfm}
 
 { TfrmShortCutGrabber }
@@ -302,7 +305,7 @@ end;
 procedure TfrmShortCutGrabber.SetPreviewShortCut;
 begin
 
-  lblShortCutPreview.Caption := ShortCutToTextRaw(GetShortCut);
+  lblShortCutPreview.Caption := ShortCutToTextFix(GetShortCut);
   lblShortCutPreview.Font.Color := clDefault;
 
 end;
