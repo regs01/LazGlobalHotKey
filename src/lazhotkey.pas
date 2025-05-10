@@ -437,7 +437,7 @@ begin
     Result := Result and ResultValue;
   end;
   if FHotKeyList.Count = 0 then
-    Result = True;
+    Result := True;
 
   StartHandler;
 
@@ -461,7 +461,7 @@ begin
     Result := Result and ResultValue;
   end;
   if FHotKeyList.Count = 0 then
-    Result = True;
+    Result := True;
 
 end;
 
@@ -485,7 +485,7 @@ begin
     Result := Result and ResultValue;
   end;
   if FHotKeyList.Count = 0 then
-    Result = True;
+    Result := True;
 
 end;
 
