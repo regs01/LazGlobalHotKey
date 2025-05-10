@@ -47,7 +47,7 @@ uses
       procedure StartHandler;
       procedure StopHandler;
       function RegisterGlobalHotkey(AHotKeyInfo: PTHotKeyInfo): Boolean;
-      function UnregisterGlobalHotkey(AHotKeyInfo: PTHotKeyInfo): Boolean;
+      function UnregisterGlobalHotkey(AHotKeyInfo: PTHotKeyInfo; AForce: Boolean = False): Boolean;
       function AddGlobalHotkey(var AHotKeyInfo: THotKeyInfo): Boolean;
       function AddGlobalHotkey(const ANativeShortCut: TNativeShortCut; const APlatformAdjusted: Boolean = False): Boolean;
       function RemoveGlobalHotkey(const ANativeShortCut: TNativeShortCut): Boolean;
@@ -196,8 +196,7 @@ begin
   if FActive <> AValue then
   begin
 
-    FActive := AValue;
-    if FActive then
+    if AValue then
       Start
     else
       Stop;
@@ -255,6 +254,7 @@ end;
 procedure TCustomGlobalHotKey.Start;
 begin
 
+  FActive := True;
   ActivateAllGloablHotkeys;
 
 end;
@@ -263,6 +263,7 @@ procedure TCustomGlobalHotKey.Stop;
 begin
 
   UnactivateAllGloablHotkeys;
+  FActive := False;
 
 end;
 
@@ -301,10 +302,10 @@ begin
 
 end;
 
-function TCustomGlobalHotKey.UnregisterGlobalHotkey(AHotKeyInfo: PTHotKeyInfo): Boolean;
+function TCustomGlobalHotKey.UnregisterGlobalHotkey(AHotKeyInfo: PTHotKeyInfo; AForce: Boolean = False): Boolean;
 begin
 
-  if IsActive then
+  if IsActive or AForce then
   begin
     Result := FPlatform.DoUnregisterGlobalHotkey(AHotKeyInfo);
     if Assigned(FOnUnregisterEvent) then
@@ -403,7 +404,7 @@ begin
 
   LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
 
-  Result := UnregisterGlobalHotkey(LpHotKeyInfo);
+  Result := UnregisterGlobalHotkey(LpHotKeyInfo, True);
 
   if Result then
     FHotKeyList.Delete(iHotKeyIndex);
@@ -467,8 +468,8 @@ begin
 
   for iHotKeyIndex := FHotKeyList.Count-1 downto 0 do
   begin
-      LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
-    ResultValue := UnregisterGlobalHotkey(LpHotKeyInfo);
+    LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
+    ResultValue := UnregisterGlobalHotkey(LpHotKeyInfo, True);
     if ResultValue then
       FHotKeyList.Delete(iHotKeyIndex);
 

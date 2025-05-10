@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, LCLType,
-  LCLProc, Menus, ExtCtrls, PopupNotifier;
+  LCLProc, Menus, ExtCtrls;
 
 type
 
