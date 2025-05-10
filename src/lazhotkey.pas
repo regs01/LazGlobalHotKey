@@ -254,6 +254,9 @@ end;
 procedure TCustomGlobalHotKey.Start;
 begin
 
+  if FActive = True then
+    Exit;
+
   FActive := True;
   ActivateAllGloablHotkeys;
 
@@ -261,6 +264,9 @@ end;
 
 procedure TCustomGlobalHotKey.Stop;
 begin
+
+  if FActive = False then
+    Exit;
 
   UnactivateAllGloablHotkeys;
   FActive := False;
