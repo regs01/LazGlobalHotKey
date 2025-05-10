@@ -430,6 +430,8 @@ begin
     ResultValue := RegisterGlobalHotkey(LpHotKeyInfo);
     Result := Result and ResultValue;
   end;
+  if FHotKeyList.Count = 0 then
+    Result = True;
 
   StartHandler;
 
@@ -452,6 +454,8 @@ begin
     ResultValue := UnregisterGlobalHotkey(LpHotKeyInfo);
     Result := Result and ResultValue;
   end;
+  if FHotKeyList.Count = 0 then
+    Result = True;
 
 end;
 
@@ -472,10 +476,10 @@ begin
     ResultValue := UnregisterGlobalHotkey(LpHotKeyInfo, True);
     if ResultValue then
       FHotKeyList.Delete(iHotKeyIndex);
-
     Result := Result and ResultValue;
-
   end;
+  if FHotKeyList.Count = 0 then
+    Result = True;
 
 end;
 
