@@ -287,9 +287,6 @@ end;
 procedure TCustomGlobalHotKey.StopHandler;
 begin
 
-  if not IsActive then
-    Exit;
-
   FPlatform.StopHandler;
 
 end;
