@@ -1,1 +1,1 @@
-// todo
+Free Pascal's Lazarus cross platform global hotkey component. For Windows, Unix X11 and macOS.

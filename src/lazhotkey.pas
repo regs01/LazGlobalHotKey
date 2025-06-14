@@ -469,6 +469,8 @@ var
   ResultValue: Boolean;
 begin
 
+  WriteLn('RemoveAllGloablHotkeys.');
+
   Result := False;
 
   StopHandler;
@@ -477,6 +479,7 @@ begin
   begin
     LpHotKeyInfo := @(FHotKeyList.List^[iHotKeyIndex]);
     ResultValue := UnregisterGlobalHotkey(LpHotKeyInfo, True);
+    // review: force remove?
     if ResultValue then
       FHotKeyList.Delete(iHotKeyIndex);
     Result := Result and ResultValue;

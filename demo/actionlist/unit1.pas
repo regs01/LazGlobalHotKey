@@ -53,7 +53,7 @@ end;
 procedure TForm1.GlobalHotKey1Register(AHotKeyInfo: PTHotKeyInfo; ASuccess: Boolean; AErrorCode: LongInt);
 begin
 
-  // THotKeyInfo.ShortCut isonly filled if we use AddGlobalHotkey(TShortCut)
+  // THotKeyInfo.ShortCut is only filled, if we use AddGlobalHotkey(TShortCut)
   // In other way you have to decode THotKeyInfo.NativeShortCut using other tools.
   if ASuccess then
     Memo1.Append(Format('Successfully registered %s.', [{%H-}ShortCutToText(AHotKeyInfo^.ShortCut)]))
