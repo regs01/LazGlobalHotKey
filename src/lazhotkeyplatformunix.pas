@@ -5,7 +5,7 @@ unit LazHotKeyPlatformUnix;
 interface
 
 uses
-  Classes, SysUtils, LCLType, LMessages, LCLIntf,
+  Classes, SysUtils, Forms, LCLType, LMessages, LCLIntf,
   BaseUnix, X, Xlib, xkblib, Unix, fptimer,
   LazHotKeyType, LazHotKeyFunctionsUnix, LazHotKeyPlatform;
 
@@ -104,14 +104,14 @@ begin
 
   try
 
+    StopHandler;
+    FTimer.OnTimer := nil;
+
     if FDisplay <> nil then
     begin
       if XSync(FDisplay, False) = 0 then
         XCloseDisplay(FDisplay);
     end;
-
-    StopHandler;
-    FTimer.OnTimer := nil;
 
   finally
     FTimer.Free;
@@ -256,7 +256,9 @@ begin
 
   inherited;
 
-  // review: process errors? 
+  WriteLn('THotKeyPlatformUnix.StartHandler.');
+
+  // review: process errors?
   //FGLibTimeoutId := glib2.g_timeout_add(100, @EventTimeoutHandler, gpointer(@FEventData));
 
   XSelectInput(FDisplay, FRootWindow, KeyPressMask);
@@ -268,10 +270,13 @@ end;
 procedure THotKeyPlatformUnix.StopHandler;
 begin
 
-  // review: process errors? 
+  // review: process errors?
+  XSelectInput(FDisplay, FRootWindow, NoEventMask);
+  XSync(FDisplay, False);
+
   FTimer.StopTimer;
   FTimer.Enabled := False;
-  XSelectInput(FDisplay, FRootWindow, NoEventMask);
+  Application.ProcessMessages;
 
   //if FGLibTimeoutId > 0 then
   //begin
