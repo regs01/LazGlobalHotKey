@@ -25,6 +25,7 @@ type
     function GetError: Longint; override;
     function GetNativeShortCut(const AShortCut: TShortCut; const {%H-}APlatformAdjusted: Boolean = True): TNativeShortCut; override;
     function GetNativeShortCut(const AKeyCode, AModifiers: UINT): TNativeShortCut;
+    function GetShortCut(const ANativeShortCut: TNativeShortCut; const {%H-}APlatformAdjusted: Boolean): TShortCut; override;
     procedure StartHandler; override;
     procedure StopHandler; override;
     function DoRegisterGlobalHotKey(const AHotKeyInfo: PTHotKeyInfo): Boolean; override;
@@ -139,6 +140,13 @@ begin
 
 end;
 
+function THotKeyPlatformWindows.GetShortCut(const ANativeShortCut: TNativeShortCut; const {%H-}APlatformAdjusted: Boolean): TShortCut;
+begin
+
+  Result := NativeShortCutToShortCut(ANativeShortCut);
+
+end;
+
 procedure THotKeyPlatformWindows.StartHandler;
 begin
 
@@ -194,4 +202,3 @@ begin
 end;
 
 end.
-

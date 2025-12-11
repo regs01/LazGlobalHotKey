@@ -12,6 +12,7 @@ uses
   function KeyCodeToNativeShortCut(const AKeycode: UINT; const AModifiers: UINT): TNativeShortCut;
   procedure NativeShortCutToKeyCode(const AShortCut: TNativeShortCut; out AKeycode: UINT; out AModifiers: UINT);
   function ShortCutToNativeShortCut(const AShortCut: TShortCut): TNativeShortCut;
+  function NativeShortCutToShortCut(const ANativeShortCut: TNativeShortCut): TShortCut;
   function VKKeycodeAndModifiersToVKHotKey(const AKeycode, AWinModifiers: DWord): DWord;
   procedure VKHotKeyToVKKeycodeAndShiftState(const AVKHotKey: DWord; out AKeycode: Word; out AShiftState: TShiftState);
   procedure VKHotKeyToVKKeycodeAndWinModifiers(const AVKHotKey: DWord; out AKeycode: Word; out AWinModifiers: DWord);
@@ -50,6 +51,20 @@ begin
   iModifiers := ShiftStateToWinModifiers(LShiftState);
 
   Result := KeyCodeToNativeShortCut(iKeyCode, iModifiers);
+
+end;
+
+function NativeShortCutToShortCut(const ANativeShortCut: TNativeShortCut): TShortCut;
+var
+  iWinKeyCode: UINT;
+  iWinModifiers: UINT;
+  LShiftState: TShiftState;
+begin
+
+  NativeShortCutToKeyCode(ANativeShortCut, iWinKeyCode, iWinModifiers);
+  LShiftState := WinModifiersToShiftState(iWinModifiers);
+
+  Result := KeyToShortCut(iWinKeyCode, LShiftState);
 
 end;
 
@@ -119,4 +134,3 @@ begin
 end;
 
 end.
-
