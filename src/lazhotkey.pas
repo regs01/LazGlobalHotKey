@@ -469,8 +469,6 @@ var
   ResultValue: Boolean;
 begin
 
-  WriteLn('RemoveAllGloablHotkeys.');
-
   Result := False;
 
   StopHandler;
